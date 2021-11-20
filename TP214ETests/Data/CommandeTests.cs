@@ -96,15 +96,15 @@ namespace TP214E.Data.Tests
             Assert.AreEqual(commande.PrixTotal, 1,4975);
         }
 
-        [TestMethod()]
-        public void Commande_ToString_retourne_la_bonne_string()
-        {
-            Commande commande = new Commande();
-            DateTime dateDeLaCommande = commande.Date;
+        //[TestMethod()]
+        //public void Commande_ToString_retourne_la_bonne_string()
+        //{
+        //    Commande commande = new Commande();
+        //    DateTime dateDeLaCommande = commande.Date;
 
-            string chaineAVerifier = commande.ToString();
+        //    string chaineAVerifier = commande.ToString();
 
-            Assert.AreEqual(chaineAVerifier, $"{dateDeLaCommande} 0,00 $");
-        }
+        //    Assert.AreEqual(chaineAVerifier, $"{dateDeLaCommande} 0,00 $");
+        //}
     }
 }
