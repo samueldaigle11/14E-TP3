@@ -7,3 +7,4 @@ pour:
   NavigationService.Navigate(frmCommandes);
 
 [![ValidationDesTests](https://github.com/samueldaigle11/14E-TP3/actions/workflows/TestAndBuild.yml/badge.svg)](https://github.com/samueldaigle11/14E-TP3/actions/workflows/TestAndBuild.yml)
+[![deploiement github](https://github.com/samueldaigle11/14E-TP3/actions/workflows/releaseGitHub.yml/badge.svg)](https://github.com/samueldaigle11/14E-TP3/actions/workflows/releaseGitHub.yml)
