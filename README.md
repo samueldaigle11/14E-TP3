@@ -6,4 +6,4 @@ l'erreur était que la PageCommande avait été créée comme une Window au lieu
 pour:
   NavigationService.Navigate(frmCommandes);
 
-
+[![ValidationDesTests](https://github.com/samueldaigle11/14E-TP3/actions/workflows/TestAndBuild.yml/badge.svg)](https://github.com/samueldaigle11/14E-TP3/actions/workflows/TestAndBuild.yml)
