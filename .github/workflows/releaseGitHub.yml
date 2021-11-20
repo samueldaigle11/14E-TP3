@@ -4,11 +4,11 @@ on:
   push:
     branches: [ master ]
     tags:
-      - "TP3-V*"
+      - TP3-V*
   pull_request:
     branches: [ master ]
     tags:
-      - "TP3-V*"
+      - TP3-V*
 
 env:
   PROJECT_PATH: TP214E/TP214E.csproj
