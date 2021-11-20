@@ -7,7 +7,7 @@ namespace TP214E.Data.Tests
     [TestClass()]
     public class CommandeTests
     {
-        // commentaire ajouté juste pour pouvoir push pour tester l'action gitHub
+        // commentaire ajouté juste pour pouvoir push pour tester l'action gitHub tag TP3-V1.0.1-beta
         [TestMethod()]
         public void Commande_test_accesseur_Id()
         {
