@@ -35,7 +35,5 @@ namespace TP214E.Data
         {
             return $"{Nom} {Prix:C2}";
         }
-
-        // TODO METTRE METHODES POUR ENLEVER DANS LINVENTAIRE
     }
 }
