@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using MongoDB.Bson;
 
 namespace TP214E.Data
@@ -114,6 +115,7 @@ namespace TP214E.Data
 
         public override string ToString()
         {
+            string prixTotal = PrixTotal.ToString(new CultureInfo("fr-CA"));
             return $"{Date} {PrixTotal:C2}";
         }
     }
