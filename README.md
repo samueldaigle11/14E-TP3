@@ -5,3 +5,5 @@ l'erreur était que la PageCommande avait été créée comme une Window au lieu
   this.NavigationService.Navigate(new Uri("Pages/PageCommandes.xaml", UriKind.Relative));
 pour:
   NavigationService.Navigate(frmCommandes);
+
+[![.NET](https://github.com/samueldaigle11/14E-TP3/actions/workflows/TestAndBuild.yml/badge.svg)](https://github.com/samueldaigle11/14E-TP3/actions/workflows/TestAndBuild.yml)
