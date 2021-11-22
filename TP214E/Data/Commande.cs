@@ -115,8 +115,9 @@ namespace TP214E.Data
 
         public override string ToString()
         {
-            string prixTotal = PrixTotal.ToString(new CultureInfo("fr-CA"));
-            return $"{Date} {prixTotal:C2}";
+            double prixTotal = Math.Round(PrixTotal,2);
+
+            return string.Format("{0} {1:0.##} $",Date,prixTotal.ToString("0.00", new CultureInfo("fr-CA")));
         }
     }
 }
