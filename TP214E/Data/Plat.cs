@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Globalization;
 using MongoDB.Bson;
 namespace TP214E.Data
 {
@@ -7,11 +8,13 @@ namespace TP214E.Data
         private ObjectId _id;
         private string _nom;
         private double _prix;
+        private List<Ingredient> _ingredients;
 
-        public Plat(string pNom, double pPrix)
+        public Plat(string pNom, double pPrix, List<Ingredient> pIngredients)
         {
             Nom = pNom;
             Prix = pPrix;
+            Ingredients = pIngredients;
         }
 
         public ObjectId Id
@@ -30,6 +33,12 @@ namespace TP214E.Data
         {
             get { return _prix; }
             set { _prix = value; }
+        }
+
+        public List<Ingredient> Ingredients
+        {
+            get { return _ingredients; }
+            set { _ingredients = value; }
         }
 
         public override string ToString()
