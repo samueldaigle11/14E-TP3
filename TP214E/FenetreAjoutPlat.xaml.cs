@@ -28,7 +28,26 @@ namespace TP214E
 
         private void AjouterPlat(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                // TODO Vérifier les champs
+                //VerifierChampQuantiteFormulaire(txtQuantite.Text);
 
+                foreach (Ingredient ingredient in lstIngredients.Items)
+                {
+                    lstIngredientsDuPlat.Add(ingredient);
+                }
+
+                Plat nouveauPlat = new Plat(txtNomPlat.Text, Convert.ToDouble(txtPrix.Text), lstIngredientsDuPlat);
+
+                accesseurBaseDeDonnees.AjouterPlat(nouveauPlat);
+                DialogResult = true;
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Erreur",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void AnnulerEtFermer(object sender, RoutedEventArgs e)
@@ -61,17 +80,15 @@ namespace TP214E
                         Convert.ToInt32(txtQuantiteIngredient.Text));
                 }
 
-                Ingredient ingredientAAjouter = new Ingredient((ObjetInventaire)objetInventairePourIngredientAAjouter,
+                Ingredient ingredientAAjouter = new Ingredient(objetInventairePourIngredientAAjouter,
                     Convert.ToInt32(txtQuantiteIngredient.Text));
                 lstIngredients.Items.Add(ingredientAAjouter);
-
             }
             catch (ArgumentException ex)
             {
                 MessageBox.Show(ex.Message, "Erreur",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
         }
     }
 }
