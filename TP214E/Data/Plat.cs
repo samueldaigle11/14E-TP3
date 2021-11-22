@@ -34,7 +34,7 @@ namespace TP214E.Data
 
         public override string ToString()
         {
-            return string.Format("{0} {1:0.##} $",Nom, Prix.ToString("0.00", new CultureInfo("fr-CA")));
+            return string.Format("{0} {1:0.##} $", Nom, Prix.ToString("0.00", new CultureInfo("fr-CA")));
         }
     }
 }
