@@ -17,7 +17,7 @@ namespace TP214E.Data
 
             try
             {
-                baseDeDonnees = clientMongoDB.GetDatabase("TP2DB");
+                baseDeDonnees = clientMongoDB.GetDatabase("TP3DB");
             }
             catch (Exception exception)
             {
@@ -29,6 +29,23 @@ namespace TP214E.Data
         public List<Plat> ObtenirPlats()
         {
             return baseDeDonnees.GetCollection<Plat>("plats").Aggregate().ToList();
+        }
+
+        public void AjouterPlat(Plat platAAjouter)
+        {
+            IMongoCollection<Plat> platCollection =
+                baseDeDonnees.GetCollection<Plat>("plats");
+
+            platCollection.InsertOne(platAAjouter);
+        }
+
+        public void SupprimerPlat(Plat platASupprimer)
+        {
+            IMongoCollection<Plat> platCollection =
+                baseDeDonnees.GetCollection<Plat>("plats");
+
+            var filtre = Builders<Plat>.Filter.Eq("_id", platASupprimer.Id);
+            platCollection.DeleteOne(filtre);
         }
 
         public void AjouterObjet(ObjetInventaire objetAAjouter)
@@ -92,7 +109,7 @@ namespace TP214E.Data
 
             try
             {
-                clientBaseDeDonnees = new MongoClient("mongodb://localhost:27017/TP2DB");
+                clientBaseDeDonnees = new MongoClient("mongodb://localhost:27017/TP3DB");
             }
             catch (Exception ex)
             {

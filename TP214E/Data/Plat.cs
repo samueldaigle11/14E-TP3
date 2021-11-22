@@ -8,6 +8,7 @@ namespace TP214E.Data
         private ObjectId _id;
         private string _nom;
         private double _prix;
+        private string _categorie;
         private List<Ingredient> _ingredients;
 
         public Plat(string pNom, double pPrix, List<Ingredient> pIngredients)
@@ -33,6 +34,12 @@ namespace TP214E.Data
         {
             get { return _prix; }
             set { _prix = value; }
+        }
+
+        public string Categorie
+        {
+            get { return _categorie; }
+            set { _categorie = value; }
         }
 
         public List<Ingredient> Ingredients
