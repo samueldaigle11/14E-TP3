@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using TP214E.Data;
+using TP214E.Pages;
 
 namespace TP214E
 {
@@ -26,6 +27,13 @@ namespace TP214E
             PageCommandes frmCommandes = new PageCommandes(accesseurBaseDeDonnees);
 
             NavigationService.Navigate(frmCommandes);
+        }
+
+        private void NaviguerAPagePlats(object sender, RoutedEventArgs e)
+        {
+            PagePlats frmPlats = new PagePlats(accesseurBaseDeDonnees);
+
+            NavigationService.Navigate(frmPlats);
         }
     }
 }

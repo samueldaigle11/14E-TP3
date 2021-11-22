@@ -1,0 +1,49 @@
+﻿<Page x:Class="TP214E.Pages.PagePlats"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TP214E.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PagePlats">
+
+    <Grid ShowGridLines="True" Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="180"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="1" Content="Plats du FoodTruck" Foreground="#FF5F8C5A" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Rockwell" FontSize="36" FontWeight="Normal"/>
+        <ListBox Grid.Row="1" Grid.Column="1" Name="lstPlats" Margin="0,0,10,10">
+        </ListBox>
+        <Button Name="bt_retourAccueil" Content="Retour vers l'Accueil" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" Background="#CC5F8C5A" BorderBrush="White" Foreground="Black" BorderThickness="2,2,2,2" Padding="10,5" FontSize="24" Width="320" FontWeight="Bold" FontFamily="Rockwell" Margin="0,0,0,0" Click="RetournerAAccueil">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center" >
+            <Button x:Name="bt_ajouterPlat" Content="Ajouter un plat" Background="#CC5F8C5A" BorderBrush="White" Foreground="Black" BorderThickness="2,2,2,2" Padding="5,2,5,2" FontSize="12" Height="30"  FontWeight="Bold" FontFamily="Tahoma" Click="OuvrirFenetreAjoutPlat">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="bt_supprimerPlat" Content="Supprimer un plat" Background="#CC5F8C5A" BorderBrush="White" Foreground="Black" BorderThickness="2,2,2,2" Padding="5,2,5,2" FontSize="12" Height="30"  FontWeight="Bold" FontFamily="Tahoma" Margin="0,10">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -31,6 +31,23 @@ namespace TP214E.Data
             return baseDeDonnees.GetCollection<Plat>("plats").Aggregate().ToList();
         }
 
+        public void AjouterPlat(Plat platAAjouter)
+        {
+            IMongoCollection<Plat> platCollection =
+                baseDeDonnees.GetCollection<Plat>("plats");
+
+            platCollection.InsertOne(platAAjouter);
+        }
+
+        public void SupprimerPlat(Plat platASupprimer)
+        {
+            IMongoCollection<Plat> platCollection =
+                baseDeDonnees.GetCollection<Plat>("plats");
+
+            var filtre = Builders<Plat>.Filter.Eq("_id", platASupprimer.Id);
+            platCollection.DeleteOne(filtre);
+        }
+
         public void AjouterObjet(ObjetInventaire objetAAjouter)
         {
             IMongoCollection<ObjetInventaire> objetInventaireCollection = 
