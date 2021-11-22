@@ -33,7 +33,7 @@ namespace TP214E
                 {
                     VerifierChampDatePeremptionFormulaire(txtDatePeremption.Text);
 
-                    nouvelObjetInventaire = new Aliment(txtNom.Text, Convert.ToInt32(txtQuantite.Text), txtUnite.Text,                     
+                    nouvelObjetInventaire = new Aliment(txtNom.Text, Convert.ToInt32(txtQuantite.Text), txtUnite.Text,
                     DateTime.Parse(txtDatePeremption.Text).ToLocalTime());
                 }
                 else if (radioContenant.IsChecked == true)

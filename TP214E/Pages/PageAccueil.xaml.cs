@@ -18,21 +18,18 @@ namespace TP214E
         private void NaviguerAPageInventaire(object sender, RoutedEventArgs e)
         {
             PageInventaire frmInventaire = new PageInventaire(accesseurBaseDeDonnees);
-
             NavigationService.Navigate(frmInventaire);
         }
 
         private void NaviguerAPageCommande(object sender, RoutedEventArgs e)
         {
             PageCommandes frmCommandes = new PageCommandes(accesseurBaseDeDonnees);
-
             NavigationService.Navigate(frmCommandes);
         }
 
         private void NaviguerAPagePlats(object sender, RoutedEventArgs e)
         {
             PagePlats frmPlats = new PagePlats(accesseurBaseDeDonnees);
-
             NavigationService.Navigate(frmPlats);
         }
     }
