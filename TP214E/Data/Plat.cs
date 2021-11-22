@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using System.Globalization;
+using MongoDB.Bson;
 namespace TP214E.Data
 {
     public class Plat
@@ -33,7 +34,7 @@ namespace TP214E.Data
 
         public override string ToString()
         {
-            return $"{Nom} {Prix:C2}";
+            return string.Format("{0} {1:0.##} $",Nom, Prix.ToString("0.00", new CultureInfo("fr-CA")));
         }
     }
 }

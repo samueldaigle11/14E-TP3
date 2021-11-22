@@ -17,14 +17,14 @@ namespace TP214E.Data.Tests
             Assert.AreEqual(plat.Id, id);
         }
 
-        //[TestMethod()]
-        //public void Plat_ToString_retourne_la_bonne_string()
-        //{
-        //    Plat plat = new Plat("poutine", 10.00);
+        [TestMethod()]
+        public void Plat_ToString_retourne_la_bonne_string()
+        {
+            Plat plat = new Plat("poutine", 10.00);
 
-        //    string chaineRetournee = plat.ToString();
+            string chaineRetournee = plat.ToString();
 
-        //    Assert.AreEqual(chaineRetournee, "poutine 10,00 $");
-        //}
+            Assert.AreEqual(chaineRetournee, "poutine 10,00 $");
+        }
     }
 }
