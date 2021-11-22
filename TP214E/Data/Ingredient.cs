@@ -26,5 +26,10 @@ namespace TP214E.Data
             ObjetInventaire = pObjetInventaire;
             Quantite = pQuantite;
         }
+
+        public override string ToString()
+        {
+            return $"{ObjetInventaire.Nom} quantité: {Quantite}";
+        }
     }
 }

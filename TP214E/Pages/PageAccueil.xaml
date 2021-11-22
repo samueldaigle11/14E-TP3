@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Accueil">
 
-    <Grid Background="Black">
+    <Grid ShowGridLines="True" Background="Black">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*"/>
@@ -29,7 +29,7 @@
         </Border>
 
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
-            <Button Content="Consulter l'inventaire" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Background="#CC5F8C5A" BorderBrush="White" Foreground="Black" BorderThickness="2,2,2,2" Padding="10,5" FontSize="24" Width="320" Click="NaviguerAPageInventaire" FontWeight="Bold" FontFamily="Rockwell" Margin="0,0,0,60">
+            <Button Content="Consulter l'inventaire" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Background="#CC5F8C5A" BorderBrush="White" Foreground="Black" BorderThickness="2,2,2,2" Padding="10,5" FontSize="24" Width="320" Click="NaviguerAPageInventaire" FontWeight="Bold" FontFamily="Rockwell" Margin="0,0,0,30">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>
@@ -37,14 +37,22 @@
                 </Button.Resources>
             </Button>
 
-            <Button Content="Gestion des commandes" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center"  Background="#CC5F8C5A" BorderBrush="White" Foreground="Black" BorderThickness="2,2,2,2" Padding="10,5" FontSize="24" Width="320" FontWeight="Bold" FontFamily="Rockwell" Click="NaviguerAPageCommande" >
+            <Button Content="Gestion des commandes" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center"  Background="#CC5F8C5A" BorderBrush="White" Foreground="Black" BorderThickness="2,2,2,2" Padding="10,5" FontSize="24" Width="320" FontWeight="Bold" FontFamily="Rockwell" Click="NaviguerAPageCommande" Margin="0,0,0,30" >
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>
                     </Style>
                 </Button.Resources>
-
             </Button>
+
+            <Button Content="Gestion des plats" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center"  Background="#CC5F8C5A" BorderBrush="White" Foreground="Black" BorderThickness="2,2,2,2" Padding="10,5" FontSize="24" Width="320" FontWeight="Bold" FontFamily="Rockwell" Click="NaviguerAPagePlats" >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
         </StackPanel>
         
         <Label Grid.Row="2" Grid.Column="1" Content="Conception et &#10;qualité logicielle" Foreground="#FFF" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Rockwell" FontSize="12" FontWeight="Bold" Margin="0,0,10,0"/>
