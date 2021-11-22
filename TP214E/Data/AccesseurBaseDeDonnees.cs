@@ -17,7 +17,7 @@ namespace TP214E.Data
 
             try
             {
-                baseDeDonnees = clientMongoDB.GetDatabase("TP2DB");
+                baseDeDonnees = clientMongoDB.GetDatabase("TP3DB");
             }
             catch (Exception exception)
             {
@@ -92,7 +92,7 @@ namespace TP214E.Data
 
             try
             {
-                clientBaseDeDonnees = new MongoClient("mongodb://localhost:27017/TP2DB");
+                clientBaseDeDonnees = new MongoClient("mongodb://localhost:27017/TP3DB");
             }
             catch (Exception ex)
             {
