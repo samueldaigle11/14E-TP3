@@ -37,7 +37,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button x:Name="bt_supprimerPlat" Content="Supprimer un plat" Background="#CC5F8C5A" BorderBrush="White" Foreground="Black" BorderThickness="2,2,2,2" Padding="5,2,5,2" FontSize="12" Height="30"  FontWeight="Bold" FontFamily="Tahoma" Margin="0,10">
+            <Button x:Name="bt_supprimerPlat" Content="Supprimer un plat" Background="#CC5F8C5A" BorderBrush="White" Foreground="Black" BorderThickness="2,2,2,2" Padding="5,2,5,2" FontSize="12" Height="30"  FontWeight="Bold" FontFamily="Tahoma" Margin="0,10" Click="SupprimerPlat">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="5"/>

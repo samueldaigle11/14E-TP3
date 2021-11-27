@@ -56,7 +56,7 @@ namespace TP214E.Pages
             }
         }
 
-        private void SupprimerObjetInventaire(object sender, RoutedEventArgs e)
+        private void SupprimerPlat(object sender, RoutedEventArgs e)
         {
             if (lstPlats.SelectedIndex != -1)
             {
