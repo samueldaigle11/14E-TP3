@@ -38,7 +38,7 @@ namespace TP214E
                     lstIngredientsDuPlat.Add(ingredient);
                 }
 
-                Plat nouveauPlat = new Plat(txtNomPlat.Text, Convert.ToDouble(txtPrix.Text), lstIngredientsDuPlat);
+                Plat nouveauPlat = new Plat(txtNomPlat.Text, Convert.ToDouble(txtPrix.Text), txtCategorie.Text, lstIngredientsDuPlat);
 
                 accesseurBaseDeDonnees.AjouterPlat(nouveauPlat);
                 DialogResult = true;

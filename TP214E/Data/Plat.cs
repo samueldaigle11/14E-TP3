@@ -11,10 +11,11 @@ namespace TP214E.Data
         private string _categorie;
         private List<Ingredient> _ingredients;
 
-        public Plat(string pNom, double pPrix, List<Ingredient> pIngredients)
+        public Plat(string pNom, double pPrix, string pCategorie, List<Ingredient> pIngredients)
         {
             Nom = pNom;
             Prix = pPrix;
+            Categorie = pCategorie;
             Ingredients = pIngredients;
         }
 
