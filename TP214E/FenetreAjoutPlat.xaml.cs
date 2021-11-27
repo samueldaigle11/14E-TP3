@@ -38,7 +38,7 @@ namespace TP214E
                     lstIngredientsDuPlat.Add(ingredient);
                 }
 
-                Plat nouveauPlat = new Plat(txtNomPlat.Text, Convert.ToDouble(txtPrix.Text), lstIngredientsDuPlat);
+                Plat nouveauPlat = new Plat(txtNomPlat.Text, Convert.ToDouble(txtPrix.Text), txtCategorie.Text, lstIngredientsDuPlat);
 
                 accesseurBaseDeDonnees.AjouterPlat(nouveauPlat);
                 DialogResult = true;
@@ -59,36 +59,42 @@ namespace TP214E
         {
             try
             {
-                ObjetInventaire objetInventairePourIngredientAAjouter;
+                string typeIngredient;
                 //VerifierChampQuantiteFormulaire(txtQuantite.Text);
 
                 if (radioAliment.IsChecked == true)
                 {
                     //VerifierChampDatePeremptionFormulaire(txtDatePeremption.Text);
 
-                    objetInventairePourIngredientAAjouter = new Aliment(txtNomIngredient.Text,
-                        Convert.ToInt32(txtQuantiteIngredient.Text), txtUniteIngredient.Text, DateTime.Now);
+                    typeIngredient = "aliment";
                 }
                 else if (radioContenant.IsChecked == true)
                 {
-                    objetInventairePourIngredientAAjouter = new Contenant(txtNomIngredient.Text, 
-                        Convert.ToInt32(txtQuantiteIngredient.Text));
+                    typeIngredient = "contenant";
                 }
                 else
                 {
-                    objetInventairePourIngredientAAjouter = new Ustensile(txtNomIngredient.Text, 
-                        Convert.ToInt32(txtQuantiteIngredient.Text));
+                    typeIngredient = "ustensile";
                 }
 
-                Ingredient ingredientAAjouter = new Ingredient(objetInventairePourIngredientAAjouter,
-                    Convert.ToInt32(txtQuantiteIngredient.Text));
+                Ingredient ingredientAAjouter = new Ingredient(txtNomIngredient.Text,
+                    Convert.ToInt32(txtQuantiteIngredient.Text), txtUniteIngredient.Text, typeIngredient);
                 lstIngredients.Items.Add(ingredientAAjouter);
+
+                ViderChampsIngredient();
             }
             catch (ArgumentException ex)
             {
                 MessageBox.Show(ex.Message, "Erreur",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void ViderChampsIngredient()
+        {
+            txtNomIngredient.Clear();
+            txtQuantiteIngredient.Clear();
+            txtUniteIngredient.Clear();
         }
     }
 }
