@@ -12,6 +12,8 @@ namespace TP214E
     public partial class fenetreAjoutCommande : Window
     {
         private List<Plat> plats;
+        private List<ObjetInventaire> objetInventaires;
+        private Dictionary<string, int> ingredientsNecessaires;
         private AccesseurBaseDeDonnees accesseurBaseDeDonnees;
         private Commande commande;
 
@@ -20,6 +22,7 @@ namespace TP214E
             InitializeComponent();
 
             this.accesseurBaseDeDonnees = accesseurBaseDeDonnees;
+            objetInventaires = accesseurBaseDeDonnees.ObtenirObjetsInventaire();
             commande = new Commande();
 
             RafraichirLstPlatsDisponibles();
@@ -34,6 +37,9 @@ namespace TP214E
         {
             if (commande.Plats.Count > 0)
             {
+                // valider disponibilité des ObjetInventaire ici***
+
+
                 accesseurBaseDeDonnees.AjouterCommande(commande);
                 DialogResult = true;
             }
@@ -90,6 +96,36 @@ namespace TP214E
             }
 
             RafraichirLstContenuCommande();
+        }
+
+        private void CalculerIngredientsNecessaires()
+        {
+            ingredientsNecessaires = new Dictionary<string, int>();
+
+            foreach (Plat plat in commande.Plats)
+            {
+                foreach (Ingredient ingredient in plat.Ingredients)
+                {
+                    if (ingredientsNecessaires.ContainsKey(ingredient.Nom))
+                    {
+                        ingredientsNecessaires[ingredient.Nom] += ingredient.Quantite; 
+                    }
+                    else
+                    {
+                        ingredientsNecessaires[ingredient.Nom] = ingredient.Quantite;
+                    }
+                }
+            }
+        }
+
+        private bool VerifierSiCommandeEstPossible()
+        {
+            foreach (string nomIngredient in ingredientsNecessaires.Keys)
+            {
+
+            }
+
+            return false;
         }
     }
 }

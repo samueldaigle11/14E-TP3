@@ -6,13 +6,15 @@ namespace TP214E.Data
 {
     public class Ingredient
     {
-        private ObjetInventaire _objetInventaire;
+        private string _nom;
         private int _quantite;
+        private string _unite;
+        private string _type;
 
-        public ObjetInventaire ObjetInventaire
+        public string Nom
         {
-            get { return _objetInventaire; }
-            set { _objetInventaire = value; }
+            get { return _nom; }
+            set { _nom = value; }
         }
 
         public int Quantite
@@ -21,15 +23,30 @@ namespace TP214E.Data
             set { _quantite = value; }
         }
 
-        public Ingredient(ObjetInventaire pObjetInventaire, int pQuantite)
+        public string Unite
         {
-            ObjetInventaire = pObjetInventaire;
+            get { return _unite; }
+            set { _unite = value; }
+        }
+
+        public string Type
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
+
+
+        public Ingredient(string pNom, int pQuantite, string pUnite, string pType)
+        {
+            Nom = pNom;
             Quantite = pQuantite;
+            Unite = pUnite;
+            Type = pType;
         }
 
         public override string ToString()
         {
-            return $"{ObjetInventaire.Nom} quantité: {Quantite}";
+            return $"{Nom} quantité: {Quantite} {Unite}";
         }
     }
 }

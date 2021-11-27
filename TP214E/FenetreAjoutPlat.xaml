@@ -61,9 +61,9 @@
             <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" Background="LightGray" Height="40" VerticalAlignment="Top">
                 <Label FontWeight="Bold">Type d'ingredient à ajouter</Label>
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton GroupName="typeObjet" Name="radioAliment" IsChecked="True" Margin="10,0,0,0">Aliment</RadioButton>
-                    <RadioButton GroupName="typeObjet" Name="radioContenant" Margin="10,0,0,0">Contenant</RadioButton>
-                    <RadioButton GroupName="typeObjet" Name="radioUstensile" Margin="10,0,0,0">Ustensile</RadioButton>
+                    <RadioButton GroupName="typeIngredient" Name="radioAliment" IsChecked="True" Margin="10,0,0,0">Aliment</RadioButton>
+                    <RadioButton GroupName="typeIngredient" Name="radioContenant" Margin="10,0,0,0">Contenant</RadioButton>
+                    <RadioButton GroupName="typeIngredient" Name="radioUstensile" Margin="10,0,0,0">Ustensile</RadioButton>
                 </StackPanel>
             </StackPanel>
 
