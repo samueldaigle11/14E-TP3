@@ -108,7 +108,9 @@ namespace TP214E.Data
             IMongoCollection<ObjetInventaire> objetsInventaireCollection = baseDeDonnees.GetCollection<ObjetInventaire>("objetsInventaire");
 
             var filtre = Builders<ObjetInventaire>.Filter.Eq("Nom", nomObjetsRecherches) &
-                Builders<ObjetInventaire>.Filter.Gte("DatePeremption", Commande.ObtenirDateActuelleHeureDeLEst());
+                Builders<ObjetInventaire>.Filter.Or(
+                    Builders<ObjetInventaire>.Filter.Gte("DatePeremption", Commande.ObtenirDateActuelleHeureDeLEst()),
+                    Builders<ObjetInventaire>.Filter.Exists("DatePeremption", false));
 
             return objetsInventaireCollection.Find(filtre).ToList();
         }
