@@ -13,27 +13,25 @@ namespace TP214E.Data.Tests
         public void Plat_test_accesseur_Id()
         {
             List<Ingredient> lstIngredients = new List<Ingredient>();
-            Aliment frites = new Aliment("Frites", 300, "grammes", DateTime.Now);
-            Ingredient ingredient = new Ingredient(frites, 200);
+            Ingredient ingredient = new Ingredient("Frites", 300, "grammes", "aliment");
             lstIngredients.Add(ingredient);
-            Plat plat = new Plat("poutine", 10.00, lstIngredients);
+            Plat poutine = new Plat("poutine", 10.00, "Plat principal", lstIngredients);
             ObjectId id = ObjectId.GenerateNewId();
 
-            plat.Id = id;
+            poutine.Id = id;
 
-            Assert.AreEqual(plat.Id, id);
+            Assert.AreEqual(poutine.Id, id);
         }
 
         [TestMethod()]
         public void Plat_ToString_retourne_la_bonne_string()
         {
             List<Ingredient> lstIngredients = new List<Ingredient>();
-            Aliment frites = new Aliment("Frites",300,"grammes", DateTime.Now);
-            Ingredient ingredient = new Ingredient(frites, 200);
+            Ingredient ingredient = new Ingredient("Frites", 300, "grammes", "aliment");
             lstIngredients.Add(ingredient);
-            Plat plat = new Plat("poutine", 10.00, lstIngredients);
+            Plat poutine = new Plat("poutine", 10.00, "Plat principal", lstIngredients);
 
-            string chaineRetournee = plat.ToString();
+            string chaineRetournee = poutine.ToString();
 
             Assert.AreEqual(chaineRetournee, "poutine 10,00 $");
         }
