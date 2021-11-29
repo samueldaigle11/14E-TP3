@@ -14,7 +14,24 @@ namespace TP214E.Data
         public string Nom
         {
             get { return _nom; }
-            set { _nom = value; }
+            set
+            {
+                if (value != "")
+                {
+                    if (value.Length <= 20)
+                    {
+                        _nom = value;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Le nom doit être de 20 caractères et moins.");
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Le nom doit être entré.");
+                }
+            }
         }
 
         public int Quantite
