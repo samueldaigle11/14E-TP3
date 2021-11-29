@@ -60,20 +60,23 @@ namespace TP214E
             try
             {
                 string typeIngredient;
-                //VerifierChampQuantiteFormulaire(txtQuantite.Text);
+
+                VerifierChampQuantiteIngredient(txtQuantiteIngredient.Text);
 
                 if (radioAliment.IsChecked == true)
                 {
-                    //VerifierChampDatePeremptionFormulaire(txtDatePeremption.Text);
+                    VerifierChampUniteIngredient(txtUniteIngredient.Text);
 
                     typeIngredient = "aliment";
                 }
                 else if (radioContenant.IsChecked == true)
                 {
+                    txtUniteIngredient.Clear();
                     typeIngredient = "contenant";
                 }
                 else
                 {
+                    txtUniteIngredient.Clear();
                     typeIngredient = "ustensile";
                 }
 
@@ -95,6 +98,44 @@ namespace TP214E
             txtNomIngredient.Clear();
             txtQuantiteIngredient.Clear();
             txtUniteIngredient.Clear();
+        }
+
+        private bool ChaineContientSeulementChiffres(string chaine)
+        {
+            foreach (char charactere in chaine)
+            {
+                if (charactere < '0' || charactere > '9')
+                    return false;
+            }
+
+            return true;
+        }
+
+        private void VerifierChampQuantiteIngredient(string quantite)
+        {
+            if (quantite == "")
+            {
+                throw new ArgumentException("La quantité doit être entrée.");
+            }
+            if (!ChaineContientSeulementChiffres(quantite))
+            {
+                throw new ArgumentException("La quantité doit être plus grande que 0.");
+            }
+        }
+
+        private void VerifierChampUniteIngredient(string unite)
+        {
+            if (unite != "")
+            {
+                if (unite.Length > 12)
+                {
+                    throw new ArgumentException("L'unité doit être de 12 caractères et moins.");
+                }
+            }
+            else
+            {
+                throw new ArgumentException("L'unité doit être entrée.");
+            }
         }
     }
 }
