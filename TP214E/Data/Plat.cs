@@ -52,13 +52,41 @@ namespace TP214E.Data
         public double Prix
         {
             get { return _prix; }
-            set { _prix = value; }
+            set
+            {
+                if (value > 0)
+                {
+                    _prix = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Le prix doit être supérieur" +
+                                                " à zéro.");
+                }
+            }
         }
 
         public string Categorie
         {
             get { return _categorie; }
-            set { _categorie = value; }
+            set
+            {
+                if (value != "")
+                {
+                    if (value.Length <= 20)
+                    {
+                        _categorie = value;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("La catégorie doit être de 20 caractères et moins.");
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("La catégorie doit être entrée.");
+                }
+            }
         }
 
         public List<Ingredient> Ingredients

@@ -30,13 +30,15 @@ namespace TP214E
         {
             try
             {
-                // TODO Vérifier les champs
-                //VerifierChampQuantiteFormulaire(txtQuantite.Text);
+                txtPrix.Text = txtPrix.Text.Replace('.', ',');
+                VerifierChampPrixPlat(txtPrix.Text);
 
                 foreach (Ingredient ingredient in lstIngredients.Items)
                 {
                     lstIngredientsDuPlat.Add(ingredient);
                 }
+
+                VerifierListeIngredientsPlat(lstIngredientsDuPlat);
 
                 Plat nouveauPlat = new Plat(txtNomPlat.Text, Convert.ToDouble(txtPrix.Text), txtCategorie.Text, lstIngredientsDuPlat);
 
@@ -135,6 +137,36 @@ namespace TP214E
             else
             {
                 throw new ArgumentException("L'unité doit être entrée.");
+            }
+        }
+
+        private void VerifierChampPrixPlat(string prix)
+        {
+            double prixDouble;
+            bool prixValide = Double.TryParse(prix, out prixDouble);
+            if (prix != "")
+            {
+                if (!prixValide)
+                {
+                    throw new ArgumentException("Le prix entré n'est pas valide (Exemples valides: 10,34 ou 10.34)");
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Le prix doit être entré.");
+            }
+        }
+
+        private void VerifierListeIngredientsPlat(List<Ingredient> listeIngredients)
+        {
+            if (listeIngredients == null)
+            {
+                throw new ArgumentNullException("Votre plat doit contenir au moins un ingrédient",(Exception)null);
+            }
+
+            if (listeIngredients.Count < 1)
+            {
+                throw new ArgumentException("Votre plat doit contenir au moins un ingrédient");
             }
         }
     }
