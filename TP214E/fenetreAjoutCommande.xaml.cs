@@ -37,11 +37,19 @@ namespace TP214E
         {
             if (commande.Plats.Count > 0)
             {
-                // valider disponibilité des ObjetInventaire ici***
                 if (VerifierSiCommandeEstPossible())
                 {
-                    accesseurBaseDeDonnees.AjouterCommande(commande);
-                    DialogResult = true;
+                    MessageBoxResult reponseConfirmation = MessageBox.Show($"{commande.ResumerCommande()}\n\n" +
+                        $"Voulez-vous confirmer la commande?", "Confirmation de la commande", 
+                        MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                    if (reponseConfirmation == MessageBoxResult.Yes)
+                    {
+                        accesseurBaseDeDonnees.AjouterCommande(commande);
+                        SoustraireObjetsInventaireNecessairesPourUneCommande();
+
+                        DialogResult = true;
+                    }
                 }
                 else
                 {
@@ -147,6 +155,36 @@ namespace TP214E
             }
 
             return true;
+        }
+
+        private void SoustraireObjetsInventaireNecessairesPourUneCommande()
+        {
+            foreach (string nomIngredient in ingredientsNecessaires.Keys)
+            {
+                int i = 0;
+                int quantiteASoustraire = ingredientsNecessaires[nomIngredient];
+                int quantiteSoustraite = 0;
+                List<ObjetInventaire> objetsInventaireDuNomDeIngredientASupprimer = 
+                    accesseurBaseDeDonnees.ObtenirObjetsInventaireSelonNom(nomIngredient);
+
+                while (quantiteASoustraire > 0)
+                {
+                    if (quantiteASoustraire >= objetsInventaireDuNomDeIngredientASupprimer[i].Quantite)
+                    {
+                        accesseurBaseDeDonnees.SupprimerObjet(objetsInventaireDuNomDeIngredientASupprimer[i]);
+                    }
+                    else
+                    {
+                        objetsInventaireDuNomDeIngredientASupprimer[i].Quantite -= quantiteASoustraire;
+                        accesseurBaseDeDonnees.ModifierObjet(objetsInventaireDuNomDeIngredientASupprimer[i].Id, 
+                            objetsInventaireDuNomDeIngredientASupprimer[i]);
+                    }
+
+                    quantiteSoustraite += objetsInventaireDuNomDeIngredientASupprimer[i].Quantite;
+                    quantiteASoustraire -= quantiteSoustraite;
+                    i++;
+                }
+            }
         }
     }
 }
