@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using MongoDB.Bson;
 namespace TP214E.Data
@@ -28,19 +29,64 @@ namespace TP214E.Data
         public string Nom
         {
             get { return _nom; }
-            set { _nom = value; }
+            set
+            {
+                if (value != "")
+                {
+                    if (value.Length <= 20)
+                    {
+                        _nom = value;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Le nom doit être de 20 caractères et moins.");
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Le nom doit être entré.");
+                }
+            }
         }
 
         public double Prix
         {
             get { return _prix; }
-            set { _prix = value; }
+            set
+            {
+                if (value > 0)
+                {
+                    _prix = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Le prix doit être supérieur" +
+                                                " à zéro.");
+                }
+            }
         }
 
         public string Categorie
         {
             get { return _categorie; }
-            set { _categorie = value; }
+            set
+            {
+                if (value != "")
+                {
+                    if (value.Length <= 20)
+                    {
+                        _categorie = value;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("La catégorie doit être de 20 caractères et moins.");
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("La catégorie doit être entrée.");
+                }
+            }
         }
 
         public List<Ingredient> Ingredients
