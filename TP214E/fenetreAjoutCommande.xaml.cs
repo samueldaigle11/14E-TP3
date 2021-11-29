@@ -38,10 +38,17 @@ namespace TP214E
             if (commande.Plats.Count > 0)
             {
                 // valider disponibilité des ObjetInventaire ici***
-
-
-                accesseurBaseDeDonnees.AjouterCommande(commande);
-                DialogResult = true;
+                if (VerifierSiCommandeEstPossible())
+                {
+                    accesseurBaseDeDonnees.AjouterCommande(commande);
+                    DialogResult = true;
+                }
+                else
+                {
+                    MessageBox.Show("Vous n'avez pas les quantités requises en inventaire pour au moins " +
+                        "un ingrédient pour pouvoir prendre cette commande.", "Impossible de compléter la commande",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
@@ -120,12 +127,25 @@ namespace TP214E
 
         private bool VerifierSiCommandeEstPossible()
         {
+            CalculerIngredientsNecessaires();
+
             foreach (string nomIngredient in ingredientsNecessaires.Keys)
             {
+                int quantiteEnInventaire = 0;
+                List<ObjetInventaire> objetsInventaireSelonNomParticulier = accesseurBaseDeDonnees.ObtenirObjetsInventaireSelonNom(nomIngredient);
 
+                foreach (ObjetInventaire objet in objetsInventaireSelonNomParticulier)
+                {
+                    quantiteEnInventaire += objet.Quantite;
+                }
+
+                if (ingredientsNecessaires[nomIngredient] > quantiteEnInventaire)
+                {
+                    return false;
+                }
             }
 
-            return false;
+            return true;
         }
     }
 }

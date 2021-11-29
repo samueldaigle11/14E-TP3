@@ -103,6 +103,14 @@ namespace TP214E.Data
             return baseDeDonnees.GetCollection<ObjetInventaire>("objetsInventaire").Aggregate().ToList();
         }
 
+        public List<ObjetInventaire> ObtenirObjetsInventaireSelonNom(string nomObjetsRecherches)
+        {
+            IMongoCollection<ObjetInventaire> objetsInventaireCollection = baseDeDonnees.GetCollection<ObjetInventaire>("objetsInventaire");
+            
+            var filtre = Builders<ObjetInventaire>.Filter.Eq("Nom", nomObjetsRecherches);
+            return objetsInventaireCollection.Find(filtre).ToList();
+        }
+
         private MongoClient OuvrirConnexion()
         {
             MongoClient clientBaseDeDonnees = null;
