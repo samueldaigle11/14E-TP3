@@ -113,6 +113,23 @@ namespace TP214E.Data
             PrixTotal = PrixAvantTaxes + Tps + Tvq;
         }
 
+        public string ResumerCommande()
+        {
+            CalculerPrixTotal();
+
+            string resumeCommande = "Résumé de la commande:\n";
+            foreach (Plat plat in Plats)
+            {
+                resumeCommande += $"{plat.Nom}: {plat.Prix.ToString("0.00", new CultureInfo("fr-CA"))} $\n";
+            }
+
+            resumeCommande += $"\nSous-total: {PrixAvantTaxes.ToString("0.00", new CultureInfo("fr-CA"))} $\n" +
+                $"Tps: {Tps.ToString("0.00", new CultureInfo("fr-CA"))} $\n" +
+                $"Tvq: {Tvq.ToString("0.00", new CultureInfo("fr-CA"))} $\n" +
+                $"Total: {PrixTotal.ToString("0.00", new CultureInfo("fr-CA"))} $";
+            return resumeCommande;
+        }
+
         public override string ToString()
         {
             double prixTotal = Math.Round(PrixTotal,2);
