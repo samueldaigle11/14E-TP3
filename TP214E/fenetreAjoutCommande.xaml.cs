@@ -37,11 +37,16 @@ namespace TP214E
         {
             if (commande.Plats.Count > 0)
             {
-                // valider disponibilité des ObjetInventaire ici***
                 if (VerifierSiCommandeEstPossible())
                 {
-                    accesseurBaseDeDonnees.AjouterCommande(commande);
-                    DialogResult = true;
+                    // afficher le résumé de la commande
+                    MessageBoxResult reponseConfirmation = MessageBox.Show($"{commande.ResumerCommande()}\n\n Voulez-vous confirmer la commande?",
+                        "Confirmation de la commande", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (reponseConfirmation == MessageBoxResult.Yes)
+                    {
+                        accesseurBaseDeDonnees.AjouterCommande(commande);
+                        DialogResult = true;
+                    }
                 }
                 else
                 {
