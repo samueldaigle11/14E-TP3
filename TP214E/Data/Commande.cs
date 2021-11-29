@@ -67,7 +67,7 @@ namespace TP214E.Data
             set { _prixTotal = value; }
         }
 
-        private DateTime ObtenirDateActuelleHeureDeLEst()
+        public static DateTime ObtenirDateActuelleHeureDeLEst()
         {
             TimeSpan heuresASoustraireDeUTCPourHeureDeLEst = new System.TimeSpan(5, 0, 0);
             DateTime dateActuelle = DateTime.UtcNow.Subtract(heuresASoustraireDeUTCPourHeureDeLEst);

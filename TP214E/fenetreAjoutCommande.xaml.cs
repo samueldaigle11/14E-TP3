@@ -132,7 +132,8 @@ namespace TP214E
             foreach (string nomIngredient in ingredientsNecessaires.Keys)
             {
                 int quantiteEnInventaire = 0;
-                List<ObjetInventaire> objetsInventaireSelonNomParticulier = accesseurBaseDeDonnees.ObtenirObjetsInventaireSelonNom(nomIngredient);
+                List<ObjetInventaire> objetsInventaireSelonNomParticulier =
+                    accesseurBaseDeDonnees.ObtenirObjetsInventaireSelonNom(nomIngredient);
 
                 foreach (ObjetInventaire objet in objetsInventaireSelonNomParticulier)
                 {
