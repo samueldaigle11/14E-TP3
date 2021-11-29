@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using MongoDB.Bson;
+using Moq;
 
 namespace TP214E.Data.Tests
 {
@@ -24,10 +25,9 @@ namespace TP214E.Data.Tests
         public void Commande_CalculerPrixAvantTaxes_donne_le_bon_nombre()
         {
             List<Ingredient> lstIngredients = new List<Ingredient>();
-            Aliment frites = new Aliment("Frites", 300, "grammes", DateTime.Now);
-            Ingredient ingredient = new Ingredient(frites, 200);
+            Ingredient ingredient = new Ingredient("Frites", 200, "Grammes", "aliment");
             lstIngredients.Add(ingredient);
-            Plat poutine = new Plat("poutine", 10.00, lstIngredients);
+            Plat poutine = new Plat("poutine", 10.00, "Plat principal", lstIngredients);
             Commande commande = new Commande();
             commande.AjouterPlat(poutine);
             commande.AjouterPlat(poutine);
@@ -41,10 +41,9 @@ namespace TP214E.Data.Tests
         public void Commande_AjouterPlat_ajoute_le_plat_a_la_commande()
         {
             List<Ingredient> lstIngredients = new List<Ingredient>();
-            Aliment frites = new Aliment("Frites", 300, "grammes", DateTime.Now);
-            Ingredient ingredient = new Ingredient(frites, 200);
+            Ingredient ingredient = new Ingredient("Frites", 200, "Grammes", "aliment");
             lstIngredients.Add(ingredient);
-            Plat poutine = new Plat("poutine", 10.00, lstIngredients);
+            Plat poutine = new Plat("poutine", 10.00, "Plat principal", lstIngredients);
             Commande commande = new Commande();
 
             commande.AjouterPlat(poutine);
@@ -55,19 +54,9 @@ namespace TP214E.Data.Tests
         [TestMethod()]
         public void Commande_SupprimerPlat_supprime_le_plat_de_la_commande()
         {
-            List<Ingredient> lstIngredientsPoutine = new List<Ingredient>();
-            Aliment frites = new Aliment("Frites", 300, "grammes", DateTime.Now);
-            Ingredient ingredientFrites = new Ingredient(frites, 200);
-            lstIngredientsPoutine.Add(ingredientFrites);
-            Plat poutine = new Plat("poutine", 10.00, lstIngredientsPoutine);
-
-            List<Ingredient> lstIngredientsBurger = new List<Ingredient>();
-            Aliment viandeHachee = new Aliment("Viande Hachée", 300, "grammes", DateTime.Now);
-            Ingredient ingredientViande = new Ingredient(viandeHachee, 200);
-            lstIngredientsPoutine.Add(ingredientViande);
-            Plat burger = new Plat("burger", 15.00, lstIngredientsBurger);
+            var poutineMock = new Mock<IPlat>();
             Commande commande = new Commande();
-            commande.AjouterPlat(poutine);
+            commande.AjouterPlat((Plat)poutineMock.Object);
             commande.AjouterPlat(burger);
 
             Plat platQuiSeraSupprime = commande.Plats[0];
