@@ -31,6 +31,15 @@ namespace TP214E.Data
             return baseDeDonnees.GetCollection<Plat>("plats").Aggregate().ToList();
         }
 
+        public List<Plat> ObtenirPlatsDuneCategorie(string categorie)
+        {
+            IMongoCollection<Plat> platsCollection = baseDeDonnees.GetCollection<Plat>("plats");
+
+            var filtre = Builders<Plat>.Filter.Eq("Categorie", categorie);
+
+            return platsCollection.Find(filtre).ToList();
+        }
+
         public void AjouterPlat(Plat platAAjouter)
         {
             IMongoCollection<Plat> platCollection =

@@ -29,6 +29,14 @@
         </Border>
 
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+            <Button Content="Afficher le menu" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Background="#CC5F8C5A" BorderBrush="White" Foreground="Black" BorderThickness="2,2,2,2" Padding="10,5" FontSize="24" Width="320" Click="AfficherFenetreMenu" FontWeight="Bold" FontFamily="Rockwell" Margin="0,0,0,30">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
             <Button Content="Consulter l'inventaire" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Background="#CC5F8C5A" BorderBrush="White" Foreground="Black" BorderThickness="2,2,2,2" Padding="10,5" FontSize="24" Width="320" Click="NaviguerAPageInventaire" FontWeight="Bold" FontFamily="Rockwell" Margin="0,0,0,30">
                 <Button.Resources>
                     <Style TargetType="Border">
