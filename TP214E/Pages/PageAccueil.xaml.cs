@@ -32,5 +32,11 @@ namespace TP214E
             PagePlats frmPlats = new PagePlats(accesseurBaseDeDonnees);
             NavigationService.Navigate(frmPlats);
         }
+
+        private void AfficherFenetreMenu(object sender, RoutedEventArgs e)
+        {
+            FenetreMenu fenetreMenu = new FenetreMenu(accesseurBaseDeDonnees);
+            fenetreMenu.Show();
+        }
     }
 }
